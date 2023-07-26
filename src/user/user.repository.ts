@@ -1,12 +1,19 @@
-export class UserRepository {
-  private users = [];
+import { UserEntity } from "./user.entity";
 
-  async saveUser(user) {
+export class UserRepository {
+  private users: UserEntity[] = [];
+
+  async saveUser(user: UserEntity) {
     this.users.push(user);
-    console.log(this.users);
   }
 
   async listUsers() {
     return this.users;
+  }
+
+  async emailExists(email: string):  Promise<boolean>{
+    return this.users.some(
+      user => user.email === email
+    );
   }
 }
