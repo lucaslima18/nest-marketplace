@@ -25,12 +25,12 @@ export class UserController {
 
   @Get()
   async listUsers() {
-    const all_users = await this.userRepository.listUsers()
+    const all_users = await this.userRepository.listUsers();
     return all_users.map(
       user => new ListUsersDTO(
         user.id,
         user.name
       )
-    )
+    );
   }
 }
